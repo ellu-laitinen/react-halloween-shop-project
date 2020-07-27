@@ -5,6 +5,9 @@ import classes from './ContactData.css'
 import axios from '../../../axios-orders'
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input'
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
+import * as actions from '../../../store/actions/index'
+import { updateObject, checkValidation } from '../../../shared/utility'
 
 class ContactData extends Component {
     state = {
@@ -84,18 +87,18 @@ class ContactData extends Component {
                         { value: 'cheapest', displayValue: 'cheapest' }
                     ]
                 },
-                value: '',
+                value: 'fastest',
                 validation: {},
                 valid: true
             }
         },
-        formIsValid: false,
-        loading: false
+        formIsValid: false
+
     }
 
     orderHandler = (event) => {
         event.preventDefault()
-        this.setState({ loading: true })
+
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
@@ -103,58 +106,33 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ings,
             price: this.props.price,
-            orderData: formData
-
+            orderData: formData,
+            userId: this.props.userId
         }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false })
-                this.props.history.push('/')
-            })
-            .catch(error => {
-                this.setState({ loading: false })
-            });
+
+        this.props.onOrderBurger(order, this.props.token)
+
     }
 
-    checkValidation(value, rules) {
-        let isValid = true;
 
-        /*       if (!rules) {  <-- to make the drop-down menu NOT give an error when rules are checked
-                  return true;
-              } */
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        return isValid;
-    }
 
     inputChangedHandler = (event, inputIdentifier) => {
         //  console.log(event.target.value)
-        const updatedOrderForm = {
-            ...this.state.orderForm
-        }
-        const updatedFormElement = {
-            ...updatedOrderForm[inputIdentifier]
-        }
-        updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidation(updatedFormElement.value, updatedFormElement.validation)
-        updatedFormElement.touched = true
-        updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+        const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+            value: event.target.value,
+            valid: checkValidation(event.target.value, this.state.orderForm[inputIdentifier].validation),
+            touched: true
+        });
+        const updatedOrderForm = updateObject(this.state.orderForm, {
+            [inputIdentifier]: updatedFormElement
+        });
+
 
         let formIsValid = true;
         for (let inputIdentifier in updatedOrderForm) {
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
         }
-        console.log(formIsValid)
         this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid })
     }
 
@@ -182,7 +160,7 @@ class ContactData extends Component {
                 <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
             </form >
         );
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />
         }
         return (
@@ -196,9 +174,19 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        loading: state.order.loading,
+        token: state.auth.token,
+        userId: state.auth.userId
     }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));

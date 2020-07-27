@@ -11,11 +11,6 @@ class Modal extends Component {
 
     }
 
-    componentWillUpdate() {
-        console.log('module willupdate')
-
-    }
-
     render() {
         return (
             <Auxil>
@@ -32,7 +27,6 @@ class Modal extends Component {
         )
     }
 }
-
 
 
 export default Modal;
