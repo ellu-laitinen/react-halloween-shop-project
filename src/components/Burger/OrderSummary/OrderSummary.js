@@ -15,7 +15,7 @@ const orderSummary = props => {
     return (
         <Auxil>
             <h3>Your order</h3>
-            <p>Burger with:</p>
+            <p>Halloween decorations</p>
             <ul>
                 {ingredientSummary}
             </ul>
