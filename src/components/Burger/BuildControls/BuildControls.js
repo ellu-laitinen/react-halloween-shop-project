@@ -6,6 +6,7 @@ const controls = [
     { label: 'Ghost', type: 'ghost' },
     { label: 'Pumpkin', type: 'pumpkin' },
     { label: 'Candle', type: 'candle' },
+    { label: 'Eyeball', type: 'eyeball' }
 
 ]
 

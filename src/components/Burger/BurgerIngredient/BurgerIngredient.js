@@ -42,9 +42,6 @@ const burgerIngredient = props => {
                 <div className={classes.PumpkinGrin5}> </div>
                 <div className={classes.PumpkinGrin6}> </div>
                 <div className={classes.Nose}> </div>
-
-
-
             </div>;
             break;
 
@@ -54,6 +51,12 @@ const burgerIngredient = props => {
                     <div className={classes.Eyes}> </div>
                 </div>
                 ;
+            break;
+        case ('eyeball'):
+            ingredient = <div className={classes.Eyeball}>
+                <div className={classes.Iris}> </div>
+                <div className={classes.Pupil}> </div>
+            </div>;
             break;
         default:
             ingredient = null;

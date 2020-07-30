@@ -8,10 +8,10 @@ const initialState = {
     building: false
 };
 const INGREDIENT_PRICES = {
-    ghost: 0.5,
-    candle: 0.4,
-    // meat: 1.3,
-    pumpkin: 0.7
+    ghost: 1.5,
+    candle: 1.0,
+    eyeball: 1.2,
+    pumpkin: 1.7
 }
 
 const addIngredient = (state, action) => {
@@ -49,7 +49,7 @@ const setIngredients = (state, action) => {
             ghost: action.ingredients.ghost,
             pumpkin: action.ingredients.pumpkin,
             candle: action.ingredients.candle,
-            // meat: action.ingredients.meat
+            eyeball: action.ingredients.eyeball
         },
         totalPrice: 4,
         error: false,

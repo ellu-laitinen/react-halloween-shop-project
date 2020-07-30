@@ -37,8 +37,8 @@
     .NavItem a:hover,   
     .NavItem a:active,   
     .NavItem a.active {
-        background-color: #8f5c2c;
-        border-bottom: 4px solid #40a4c8;
+        background-color: #d15400;
+        border-bottom: 4px solid #4441ff;
         color: white;
     }
 
