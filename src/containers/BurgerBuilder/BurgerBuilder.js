@@ -58,7 +58,6 @@ const burgerBuilder = props => {
             onSetAuthRedirectPath('/checkout')
             props.history.push('/auth')
         }
-
     }
 
     const purchaseCancelHandler = () => {

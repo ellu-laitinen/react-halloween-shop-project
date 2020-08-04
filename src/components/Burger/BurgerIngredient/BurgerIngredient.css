@@ -1,4 +1,4 @@
-.BreadBottom {
+/* .BreadBottom {
     height: 13%;
     width: 80%;
     background: linear-gradient(#F08E4A, #e27b36);
@@ -88,26 +88,278 @@
     margin: 2% auto;
     border-radius: 15px;
 }
-
-.Cheese {
+ */
+/* .Cheese {
     width: 90%;
     height: 4.5%;
     margin: 2% auto;
     background: linear-gradient(#f4d004, #d6bb22);
     border-radius: 20px;
+} */
+
+.Candle {
+  height: 15vh;
+  width: 10vh;
+  background: black;
+
+  margin: auto 3%;
+  border-radius: 5%;
+  position: relative;
 }
 
-.Salad {
+
+.Flame {
+  width: 15%;
+  height: 25%;
+  background: linear-gradient(-45deg, #f16406, #e06f05, #fd0404, #f15010);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+  position: absolute;
+  left: 45%;
+  top: -24%;
+  border-radius: 40%;
+  
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.Drop {
+  height: 20%;
+  width: 20%;
+  position: absolute;
+  background: black;
+  border-radius: 50% 90% 80% 50%;
+  right: -5%;
+  top: 7%;
+  transform: rotate(-20deg)
+}
+
+.Drop:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: black;
+  border-radius: 50% 50% 50% 50%;
+  right:580%;
+  top: 150%;
+  transform: rotate(35deg)
+}
+
+
+.Ghost {
+  width: 15vh;
+  height: 20vh; 
+  background: linear-gradient(to bottom left, #eff0f0 54%, #ffffcc 100%);
+  border-radius: 60% 60% 5px 5px;
+  position: relative;
+  margin: 3% auto;
+  border: solid 1px rgba(0,0,0,0.2);
+}
+
+.Eyes {
+  height: 12%;
+  width: 10%;
+  position: absolute;
+  background-color: black;
+  top: 30%;
+  left: 30%;
+  border-radius: 50%;
+  
+}
+
+.Eyes:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  top: 0%;
+  left: 300%;
+  border-radius: 50%;
+  
+}
+
+.Pumpkin {
+  width: 20vh;
+  height: 20vh;
+  background: linear-gradient(to right, #ff6600 68%, #d85316 100%);
+  margin: 25px auto;
+  border-radius: 45%;
+  position: relative;
+}
+
+.Stem {
+  height: 25%;
+  width: 10%;
+  background-color: green;
+  position: absolute;
+  left: 45%;
+  top: -25%;
+  
+}
+
+.PumpkinEyes {
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid black;
+  top: 30%;
+  left: 20%; 
+}
+
+.PumpkinEyes2 {
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid black;
+  top: 30%;
+  left: 60%; 
+  
+}
+
+.Nose {
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+  top: 50%;
+  left: 45%; 
+}
+
+
+.PumpkinGrin {
+   position: absolute;
+  width: 5%; 
+  height: 2%; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  top: 70%;
+  left: 20%; 
+  transform: rotate(35deg)
+}
+
+.PumpkinGrin2 {
+   position: absolute;
+  width: 5%; 
+  height: 2%; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  top: 75%;
+  left: 30%; 
+  transform: rotate(20deg)
+}
+
+.PumpkinGrin3{
+   position: absolute;
+   width: 5%; 
+   height: 2%; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  top: 78%;
+  left: 40%; 
+  transform: rotate(5deg)
+ 
+}
+.PumpkinGrin4{
+   position: absolute;
+   width: 5%; 
+   height: 2%;  
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  top: 78%;
+  left: 50%; 
+  transform: rotate(-5deg)
+ 
+}
+.PumpkinGrin5{
+   position: absolute;
+   width: 5%; 
+  height: 2%; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  top: 75%;
+  left: 60%; 
+  transform: rotate(-25deg)
+ 
+}
+.PumpkinGrin6{
+   position: absolute;
+   width: 5%; 
+   height: 2%; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  top: 68%;
+  left: 70%; 
+  transform: rotate(-35deg)
+ 
+}
+
+.Eyeball {
+  height: 15vh;
+  width: 15vh;
+  border-radius: 50%;
+  background: white;
+  position: relative;
+  box-shadow: inset 0 0 5px black;
+  margin: 3% auto;
+ 
+}
+
+.Iris {
+  height: 50%;
+  width: 50%;
+  border-radius: 50%;
+  top: 25%;
+  left: 25%;
+  background: linear-gradient(-45deg, #ba01d3, #d4047e, #fd0404);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+  position: absolute;
+}
+
+.Pupil {
+  height: 20%;
+  width: 20%;
+  top: 40%;
+  left: 40%;
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  
+}
+/* .Salad {
     width: 85%;
     height: 7%;
     margin: 2% auto;
     background: linear-gradient(#228c1d, #91ce50);
     border-radius: 20px;
 }
-
-.Bacon {
+ */
+/* .Bacon {
     width: 80%;
     height: 3%;
     background: linear-gradient(#bf3813, #c45e38);
     margin: 2% auto;
-}
+} */
